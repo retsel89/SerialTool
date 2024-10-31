@@ -124,7 +124,7 @@ class SerialTerminal:
     def receive_message(self):
         if self.serial_port and self.serial_port.is_open:
             try:
-                message = self.serial_port.readline().decode("utf-8").strip()
+                message = self.serial_port.readline().decode("utf-8", errors="replace").strip()
                 if message:
                     # Check if the timestamp should be shown
                     if self.show_timestamp.get():
